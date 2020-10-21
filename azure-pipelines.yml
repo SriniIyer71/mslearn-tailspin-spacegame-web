@@ -1,10 +1,22 @@
+//<<<<<<< unit-tests
+//=======
+//# ASP.NET Core
+//# Build and test ASP.NET Core projects targeting .NET Core.
+//# Add steps that run tests, create a NuGet package, deploy, and more:
+//# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+//>>>>>>> master
 trigger:
 - '*'
 
 pool:
   vmImage: 'ubuntu-18.04'
   demands:
+/*<<<<<<< unit-tests
   - npm
+=======
+    - npm
+*/>>>>>>> master
 
 variables:
   buildConfiguration: 'Release'
@@ -46,6 +58,7 @@ steps:
     projects: '**/*.csproj'
 
 - task: DotNetCoreCLI@2
+.*<<<<<<< unit-tests
   displayName: 'Run unit tests - $(buildConfiguration)'
   inputs:
     command: 'test'
@@ -54,6 +67,8 @@ steps:
     projects: '**/*.Tests.csproj'
 
 - task: DotNetCoreCLI@2
+=======
+*/>>>>>>> master
   displayName: 'Publish the project - $(buildConfiguration)'
   inputs:
     command: 'publish'
